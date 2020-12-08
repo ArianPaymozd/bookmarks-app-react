@@ -1,5 +1,6 @@
 import React from 'react';
 import Rating from '../Rating/Rating';
+import config from '../config'
 import './BookmarkItem.css';
 
 export default function BookmarkItem(props) {
@@ -32,5 +33,10 @@ export default function BookmarkItem(props) {
 }
 
 BookmarkItem.defaultProps = {
-  onClickDelete: () => {},
+  onClickDelete: (id) => {
+    console.log('clicked')
+    fetch(`${config.API_ENDPOINT}/${config.API_KEY}/${id}`, {
+      method: 'delete',
+    })
+  },
 }
